@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <script src="../static/js/bootstrap.js"></script>
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <section class="row">
+    <div class="col-md-6 ms-5">
+        <div class="card shadow p-5">
+        <b class="text-success">{{ message }} </b>
+        <b class="text-danger">{{ error }}</b>
+       
+    <form action="/login" method="POST">
+       
+        <label for="">Email</label> <br>
+        <input type="email" class="form-control" name="email" required>
+        
+        <label for="">Password</label>
+        <input type="password" class="form-control" name="password" required><br>
+
+        <button type="submit" class="btn btn-primary">Login</button>    
+      
+        <a href="/register">Dont have an Account? Click to Register</a><br><br>
+
+    
+        
+          
+      </form>
+      </div>
+    </div>
+    </section>
+
+
+</body>
+</html>

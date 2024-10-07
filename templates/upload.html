@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+</head>
+<body>
+   <!-- include the navbar  -->
+   {% include 'navbar.html' %}
+   <br>
+   <section class="row">
+    <div class="col-md-6 ms-5">
+        <div class="card shadow p-5">
+            <b class="text-success">{{ message }} </b>
+            <b class="text-danger">{{ error }}</b>
+            <h1 class="text-muted">Upload Your products</h1>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <label for="">Product Name</label>
+                <input type="text" class="form-control" name="product_name" required> <br>
+                <label for="">Product Description</label>
+                <textarea name="product_desc" id="" cols="30" rows="10" class="form-control" required></textarea> <br>
+                <label for="">Product Cost</label>
+                <input type="number" class="form-control" name="product_cost" required> <br>
+                <label for="">Product category</label>
+                <select name="product_category" id="" class="form-control" required>
+                    <option value="phones">Phones</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="appliances">Appliances</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="shoes">Shoes</option>
+                    <option value="furniture">Furniture</option>
+                </select> <br>
+                <label for="">Product Image</label>
+                <input type="file" class="form-control" name="product_image_name" required> <br>
+                <input type="submit" class="btn btn-danger" value="Upload Product">
+            </form>
+        </div>
+    </div>
+   </section>
+</body>
+</html>

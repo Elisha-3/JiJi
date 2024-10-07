@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Product</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- include navbar -->
+        {% include 'navbar.html' %}
+        <section class="row">
+            <div class="col-md-4 p-4">
+                <img src="../static/images/{{ product [5] }}" alt="{{ product [] }}" class="w-100">
+            </div>
+            <div class="col-md-8 p-5">
+                <!-- title  -->
+                <h2 class="text-danger">{{ product[1] }}</h2>
+                <br>
+                <p>{{ product[2] }}</p>
+                <br>
+                <b class="text-info">Product category: {{ product[4] }}</b><br><br>
+                <b class="text-dark">Product Quantity: 3</b><br><br>
+                <b class="text-warning">Product Cost: {{ product[3] }}</b><br><br>
+                
+                <input class="btn btn-primary" type="submit" value="Add to Cart">
+                <button type="button" class="btn btn-outline-danger">Buy Now</button>
+
+            </div>
+        </section>
+    </div>
+</body>
+</html>

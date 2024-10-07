@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <script src="../static/js/bootstrap.js"></script>
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <section class="row">
+    <div class="col-md-6 ms-5">
+        <div class="card shadow p-5">
+        <b class="text-success">{{ message }} </b>
+        <b class="text-danger">{{ error }}</b>
+        <h1 class="text-muted">Register New users</h1>
+    <form action="/register" method="POST">
+        <label for="">Username</label>
+        <input type="text" class="form-control" name="username" required> <br>
+        <label for="">Email</label>
+        <input type="email" class="form-control" name="email" required> <br>
+        <label for="">Gender</label>
+        <select name="gender" id="" class="form-control">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select> <br>
+        <label for="">Phone</label>
+        <input type="tel" class="form-control" name="phone" required> <br>
+        <label for="">Password</label>
+        <input type="password" class="form-control" name="password" required><br> <br>
+        
+        <a href="/login">Already have an Account? Click to Login</a><br><br>
+
+        <button type="submit" class="btn btn-primary">Register</button>    
+        <button type="button" class="btn btn-muted ms-2">Close</button>
+        
+          
+      </form>
+      </div>
+    </div>
+    </section>
+
+
+</body>
+</html>
