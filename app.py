@@ -1,7 +1,10 @@
 from flask import*
 import pymysql
+from mpesa import*
 from werkzeug.security import generate_password_hash, check_password_hash
 app=Flask(__name__)
+#session key
+app.secret_key = "@pgaDmin4#0"
 @app.route("/")
 def Homepage():
     # establish connection to DB
@@ -229,23 +232,40 @@ def Login():
         sql = "select * from users WHERE email = %s and password =%s"
         
         data = (email,password)
+    
         #execute
         cursor.execute(sql, data)
+    
         # check if any result found
         if cursor.rowcount==0:
             #it means the username and password not found
             return render_template("login.html", error = "Invalid login credentials")
 
         else:
-            return render_template("login.html", message = "login successful")
+            session['key']= email
+            return redirect("/")
 
 
+    else:
+        return render_template("login.html")
+#Mpesa
+    # implent STK PUSH 
+@app.route("/mpesa", methods=['POST'])
+def mpesa():
+    phone= request.form["phone"]
+    amount = request.form["amount"]
 
-    return render_template("login.html")
+    # use mpesa_payment function from mpesa.py
+    # it accepts the phone and amount as arguments
+    mpesa_payment(amount,phone)
+    return '<h1> Please complete payment in your phone</h1>' \
+    '<a href="/" class= "btn btn-outline-muted btn-sm"> Back to Products</a>'
 
 @app.route("/logout")
 def Logout():
-    return "This is logout page"
+    session.clear()
+
+    return redirect("/login")
 
 if __name__ == '__main__':
     app.run(debug=True, port=4003)

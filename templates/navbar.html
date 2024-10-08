@@ -35,10 +35,21 @@
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <!-- check if session ['key'] exists -->
+        <!-- if it exists the user should not see the login and register buttons -->
+        <!-- user is suppossed to see their email and a logout button -->
+        {% if session['key'] %}
+        <!-- user exists -->
+        <b class="text-muted">Welcome, {{session['key']}}  </b>
+        <a href="/logout" class="btn btn-outline-info">Logout</a>
+        {% else %}
+        <!-- user does not exist -->
           <a class="btn btn-outline-info" href="/login">Login</a>
+          <li class="nav-item">
+            <a class="btn btn-outline-primary ms-2 p-2" href="/register">Register</a> </li>
+        {% endif %}
                   <!-- Button trigger modal -->
-        <li class="nav-item">
-        <a class="btn btn-outline-primary ms-2 p-2" href="/register">Register</a> </li>
+        
           <!-- <button class="btn btn-success ms-2" type="submit">Register</button> -->
 
         </form>
