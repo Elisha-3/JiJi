@@ -8,13 +8,13 @@ def mpesa_payment(amount, phone):
         consumer_secret = "4FY7DHyjPwQGVVHVkK00pn9AeYhsQTEESwr38INtgQKETz8TK1YNuDXeOrMGG7DR"
  
         api_URL = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"  # AUTH URL
-        r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
+        r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret)) #
  
-        data = r.json()
+        data = r.json() # contains the access_token which is extracted and formatted with the bearer prefix to be used in subsequent APIs
         access_token = "Bearer" + ' ' + data['access_token']
  
         #  GETTING THE PASSWORD
-        timestamp = datetime.datetime.today().strftime('%Y%m%d%H%M%S')
+        timestamp = datetime.datetime.today().strftime('%Y%m%d%H%M%S') #current time is generated
         passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
         business_short_code = "174379"
         data = business_short_code + passkey + timestamp
