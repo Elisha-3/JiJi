@@ -4,11 +4,11 @@ from mpesa import*
 from werkzeug.security import generate_password_hash, check_password_hash
 app=Flask(__name__)
 #session key
-app.secret_key = "@pgaDmin4#0"
+app.secret_key = "!#$@%^%$^%@&"
 @app.route("/")
 def Homepage():
     # establish connection to DB
-    connection= pymysql.connect(host='localhost',user='root', password='',database='JIJI')
+    connection= pymysql.connect(host='kens.mysql.pythonanywhere-services.com',user='kens', password='@pgaDmin4#0',database='kens$default')
     sql = "SELECT * FROM products WHERE product_category = 'phones'"
     sql1 = "SELECT * FROM products WHERE product_category = 'electronics'"
     sql2 = "SELECT * FROM products WHERE product_category = 'appliances'"
@@ -58,7 +58,7 @@ def Homepage():
 #route for a single product
 @app.route("/single/<product_id>")
 def Singleitem(product_id):
-    connection= pymysql.connect(host='localhost',user='root', password='',database='JIJI')
+    connection= pymysql.connect(host='kens.mysql.pythonanywhere-services.com',user='kens', password='@pgaDmin4#0',database='kens$default')
     #create SQL query
     sql = "SELECT * FROM products WHERE product_id = %s "
     #create a cursor
@@ -83,7 +83,7 @@ def Upload():
         product_image_name.save('static/images/' + product_image_name.filename)
 
         # connect to DB
-        connection= pymysql.connect(host='localhost',user='root', password='',database='JIJI')
+        connection= pymysql.connect(host='kens.mysql.pythonanywhere-services.com',user='kens', password='@pgaDmin4#0',database='kens$default')
 
         # create a cursor 
         cursor = connection.cursor()
@@ -107,7 +107,7 @@ def Upload():
 @app.route("/fashion")
 def fashion():
     # establish connection to DB
-    connection= pymysql.connect(host='localhost',user='root', password='',database='JIJI')
+    connection= pymysql.connect(host='kens.mysql.pythonanywhere-services.com',user='kens', password='@pgaDmin4#0',database='kens$default')
     sql = "SELECT * FROM products WHERE product_category = 'dresses'"
     sql1 = "SELECT * FROM products WHERE product_category = 'handbags'"
     sql2 = "SELECT * FROM products WHERE product_category = 'socks'"
@@ -164,7 +164,7 @@ def UploadFashion():
         product_image_name.save('static/images/' + product_image_name.filename)
 
         # connect to DB
-        connection= pymysql.connect(host='localhost',user='root', password='',database='JIJI')
+        connection= pymysql.connect(host='kens.mysql.pythonanywhere-services.com',user='kens', password='@pgaDmin4#0',database='kens$default')
 
         # create a cursor 
         cursor = connection.cursor()
@@ -200,7 +200,7 @@ def Register():
         #hashed security
         #hashed_password = generate_password_hash(password, method= 'sha256', salt_length=int=16)
         # connect to DB
-        connection= pymysql.connect(host='localhost',user='root', password='',database='JIJI')
+        connection= pymysql.connect(host='kens.mysql.pythonanywhere-services.com',user='kens', password='@pgaDmin4#0',database='kens$default')
 
         # create a cursor 
         cursor = connection.cursor()
@@ -226,7 +226,7 @@ def Login():
         password = request.form['password']
 
         # connect to DB
-        connection= pymysql.connect(host='localhost',user='root', password='',database='JIJI')
+        connection= pymysql.connect(host='kens.mysql.pythonanywhere-services.com',user='kens', password='@pgaDmin4#0',database='kens$default')
         cursor = connection.cursor()
         # check if user exists in the DB
         sql = "select * from users WHERE email = %s and password =%s"
